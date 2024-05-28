@@ -1,7 +1,9 @@
 package com.codebuddy.restImpl;
 
+import com.codebuddy.constents.SystemsConstants;
 import com.codebuddy.rest.UserRest;
 import com.codebuddy.service.UserService;
+import com.codebuddy.utils.SystemsUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,8 @@ public class UserResrImpl implements UserRest {
         }catch(Exception ex){
             ex.printStackTrace();
         }
+        return SystemsUtils.getResponseEntity(SystemsConstants.SOMETHING_WENT_WRONG,HttpStatus.INTERNAL_SERVER_ERROR);
 
-        return new ResponseEntity<String>("{\"message":\"Something Went Wrong\"}", HttpStatus.INTERNAL_SERVER_ERROR );
+
     }
 }
